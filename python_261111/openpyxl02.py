@@ -1,9 +1,9 @@
 import os
 from openpyxl import *
-#import PatternFill
+from openpyxl.styles import PatternFill
 
 # 시트생성
-path = './test.xlsx'
+path = './python_261111/test.xlsx'
 if os.path.exists(path):
     wb = load_workbook(path)
     print('파일 확인')
@@ -16,9 +16,9 @@ ws['A1'] = '이름'
 ws['B1'] = '국어'
 ws['C1'] = '수학'
 
-# scolor = PatternFill(fill_type='solid', fgColor='FFFF00')
+scolor = PatternFill(fill_type='solid', fgColor='FFFF00')
 
-# for cell in ws[1]:
-#     cell.fill = scolor
+for cell in ws[1]:
+     cell.fill = scolor
 
 wb.save(path)    
