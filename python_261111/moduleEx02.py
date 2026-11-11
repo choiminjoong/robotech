@@ -15,6 +15,6 @@ print(sys.executable)
 import sys
 import openpyxl
 
-print(f'파이썬 실행 파일 경로 {sys.executable}')
+print(f'파이썬 실행 파일 경로: {sys.executable}')
 print(f'openpyxl 버전: {openpyxl.__version__}')
 
