@@ -8,7 +8,7 @@ d = np.array([4,5,6])
 print(f'numpy array {c} + {d} = {c+d}')
 
 arr1 = [1,2,3,4]
-np_arr1 = np.array([1,2,3,4])
+np_arr1 = np.array([1,2,3,4,5,6])
 print(f'*** array type: {type(arr1)}')
 print(f'*** numpy array type: {type(np_arr1)}')
 
@@ -56,6 +56,65 @@ print(f'*** data3 = {np_arr3.data}')
 print(f'\n*** 원본 배열: \n{np_arr2}')
 print(f'\n*** 전치 배열 T: \n{np_arr2.T}')
 
-# ndArray flatten: 1차원으로 나열
+# ndArray flatten(): 1차원으로 나열
 print(f'\n*** 원본 배열: \n{np_arr2}')
 print(f'\n*** flatten: \n{np_arr2.flatten()}')
+
+# ndArray reshape(): 배열 모양 바꾸기
+print(f'\n*** 원본 배열: \n{np_arr1}')
+print(f'\n*** reshape(2,3): \n{np_arr1.reshape(2,3)}')
+
+# ndArray sum(): 합계
+# axis: 축 옵션, axis=0 열, axis=1 행
+print(f'\n*** 원본 배열: \n{np_arr2}')
+print(f'\n*** sum(): \n{np_arr2.sum()}')
+print(f'\n*** sum(axis=0): \n{np_arr2.sum(axis=0)}')
+print(f'\n*** sum(axis=1): \n{np_arr2.sum(axis=1)}')
+
+# ndArray mean(): 평균
+# ndArray min(): 최솟값
+# ndArray max(): 최댓값
+print(f'\n*** 원본 배열: \n{np_arr2}')
+print(f'\n*** mean(): \n{np_arr2.mean()}')
+print(f'\n*** mean(axis=0): \n{np_arr2.mean(axis=0)}')
+print(f'\n*** mean(axis=1): \n{np_arr2.mean(axis=1)}')
+
+print(f'\n*** min(): \n{np_arr2.min()}')
+print(f'\n*** min(axis=0): \n{np_arr2.min(axis=0)}')
+print(f'\n*** min(axis=1): \n{np_arr2.min(axis=1)}')
+
+print(f'\n*** max(): \n{np_arr2.max()}')
+print(f'\n*** max(axis=0): \n{np_arr2.max(axis=0)}')
+print(f'\n*** max(axis=1): \n{np_arr2.max(axis=1)}')
+
+# zeros(shape): 배열을 만들고, 모든 원소를 0으로 채움
+# ones(shape): 배열을 만들고, 모든 원소를 1으로 채움
+# full(shape, value): 배열을 만들고, 모든 원소를 value값으로 채움
+print(f'\n*** np.zeros((3,4)) = \n{np.zeros((3,4))}')
+print(f'\n*** np.ones((2,3,4)) = \n{np.ones((2,3,4))}')
+print(f'\n*** np.full((3,4), 9) = \n{np.full((3,4), 9)}')
+
+# _like 계열: 다른 배열을 보고 똑같이 만듦
+# zeros_like / ones_like / full_like
+print(f'\n*** np.zeros_like(np_arr2) = \n{np.zeros_like(np_arr2)}')
+print(f'\n*** np.ones_like(np_arr2) = \n{np.ones_like(np_arr2)}')
+print(f'\n*** np.full_like(np_arr2, 7) = \n{np.full_like(np_arr2, 7)}')
+
+# random
+# random.randint(시작값, 끝값, size): 시작값 <= ? < 끝값
+print(f'\n***1 np.random.randint(-100, 100, (2,3)) = \n{np.random.randint(-100, 100, (2,3))}')
+print(f'\n***2 np.random.randint(-100, 100, (2,3)) = \n{np.random.randint(-100, 100, (2,3))}')
+
+# seed(int): 난수 생성 초기상태 고정, 같은 seed를 주면 항상 같은 난수 결과가 나옴
+np.random.seed(1)
+print(f'\n*** seed = 1, np.random.randint(-100, 100, (2,3)) = \n{np.random.randint(-100, 100, (2,3))}')
+np.random.seed(1)
+print(f'\n*** seed = 1, np.random.randint(-100, 100, (2,3)) = \n{np.random.randint(-100, 100, (2,3))}')
+
+# 2차원 배열 슬라이싱
+print(f'\n*** 원본 배열: \n{np_arr2}')
+print(f'\n*** np_arr2[1:2, 1:3]: {np_arr2[1:2, 1:3]}')
+
+# fancy
+print(f'\n*** np_arr2[:, [0,3]] : \n{np_arr2[:, [0,3]]}')
+
