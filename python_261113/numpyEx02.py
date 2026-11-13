@@ -15,8 +15,8 @@ arr = np.array([[3, 6, 9],
 print(f'\n문제1 \nshape: {arr.shape} \nndim: {arr.ndim}')
 
 # axis: 축 옵션, axis=0 행(세로), axis=1 열(가로)
-print(f'\n문제2 \n열 방향 평균: {arr.mean(axis=1)}')
-print(f'\n문제3 \n행 방향 평균: {arr.mean(axis=0)}')
+print(f'\n문제2 \n열 방향 평균: {arr.mean(axis=0)}')
+print(f'\n문제3 \n행 방향 평균: {arr.mean(axis=1)}')
 
 print(f'\n문제4 \n전치행렬: {arr.T} \nshape: {arr.T.shape}')
 
