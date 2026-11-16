@@ -21,7 +21,7 @@ print(f'랜덤숫자2: {random.randint(1,100)}')
 print(f'랜덤숫자3: {random.randint(1,100)}')
 
 # 직접 생성한 모듈 불러오기
-import md01
+import week1.python_261111.md01 as md01
 # from md01 import test
 
 md01.test()
