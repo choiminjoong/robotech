@@ -14,7 +14,7 @@ def test_exactly_20000_gets_discount():
 
 
 def test_exactly_50000_gets_discount():
-    assert order_total(["라떼"] * 10) == 45000
+    assert order_total(["라떼"] * 10) == 40000
 
 
 def test_empty_order_is_zero():

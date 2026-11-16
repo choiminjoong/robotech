@@ -1,17 +1,42 @@
 import numpy as np
 
+# https://school.programmers.co.kr/learn/courses/30/lessons/64063
+
+# 프로세스
+# 1트 => 원하는 방 앞사람 우선 배정
+# 2트 => 두번째로 원했던 사람 남아있는 앞번호 방부터 배정
+# 3트 => 2트 반복
+
+
 # k= 방 개수
 # room_number= 원하는 방 번호
 # answer = 배정된 방 번호
 def solution(k, room_number):
-    answer = []
-    room_number = np.array(room_number)
+    #입력값 제한
     if (type(k) != int) | (k < 1) | (k > 10**12):
         print('방 개수 오류')
         return False
+
+    answer = np.zeros_like(room_number) # 배정현황 초깃값 [0, 0, 0, .....]
+    rooms = np.arange(k) +1 # [1,2,3,4,5, ...] #
     
-    rooms = np.arange(k) +1
-    answer = np.zeros_like(room_number) # 배정현황 초깃값 [0, 0, 0, .....] 
+    room_first = np.array(room_number)
+
+
+    for idx, num in enumerate(room_first):
+        if (num == 0):
+            print(f'{print(f'\nRoom{num} 예약실패')    }')    
+        elif(rooms[num-1] != 0) & (num <= k):
+            answer[idx] = num
+            rooms[num-1] = 0
+            room_number[idx] = 0
+            print(f'\n{idx+1 }번 손님 Room{num} 예약완료')
+        else:
+            print(f'\nRoom{num} 예약실패')   
+    
+    
+    
+     
     cnt_reserved_rooms = np.count_nonzero(answer) # 배정된 방 수
     cnt_nonreserved_rooms = len(room_number) # 대기중인 방 수
     print(f'\n배정된 방 수: {cnt_reserved_rooms}')
@@ -46,7 +71,7 @@ def solution(k, room_number):
     reserve(room_number)
     
     #while cnt_reserved_rooms != len(room_number):
-    reserve(room_number)
+    #reserve(room_number)
 
     print('\ntest 결과')
     print(f'rooms: {rooms}')
