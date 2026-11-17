@@ -1,7 +1,4 @@
 from fastapi import FastAPI
-from fastapi.responses import PlainTextResponse
-
-
 
 app = FastAPI()
 
@@ -9,33 +6,60 @@ app = FastAPI()
 def home():
     return {"message": "안녕하세요"}
 
-
 @app.get("/health")
 def health():
     return {"status": "ok"}
 
-
 @app.get("/info")
 def info():
-    return {"name": "연습 서버", "version": "1"}
+    return {"name": "연습 서버", "version": 1}
 
 
-@app.get("/fruits", response_class=PlainTextResponse)
+@app.get("/fruits")
 def fruits():
-    fruits = ["사과", "바나나"]
-    # 2개의 데이터가 있습니다: ["사과", "바나나"]
+    return ["사과", "바나나"]
 
-    # return "2개의 데이터가 있습니다: " + fruits  => Internal Server Error
-    # return "2개의 데이터가 있습니다: " + str(fruits)
-    return f"2개의 데이터가 있습니다: {fruits}"
-    
+@app.get("/languages")
+def languages():
+    return ["Python", "JavaScript"]
 
 @app.get("/hello/{name}")
 def hello(name):
     return {"message": name + "님, 안녕하세요"}
 
-# 약타입 언어 -> js, python
-# 강타입 언어 -> c, java
+
 @app.get("/double/{number}")
 def double(number: int):
-    return (number * 2)
+    return {"result": number * 2}
+
+@app.get("/length/{text}")
+def length(text):
+    return {"length": len(text)}
+
+@app.get("/greet")
+def greet(name: str = "민수"):
+    return {"message": name + "님, 반갑습니다"}
+
+
+@app.get("/repeat")
+def repeat(word: str = "안녕", count: int = 1):
+    return {"text": word * count}
+
+@app.get("/add")
+def add(left: int = 0, right: int = 0):
+    return {"result": left + right}
+
+@app.post("/echo")
+def echo(data: dict):
+    return data
+
+
+@app.post("/welcome")
+def welcome(data: dict):
+    return {"message": data["name"] + "님, 환영합니다"}
+
+@app.post("/count")
+def count(data: dict):
+    count = len(data["items"])
+    response = {"count": count}
+    return response
